@@ -1,0 +1,41 @@
+- name: Remove Oh-My-Zsh
+  ansible.builtin.shell: sudo rm -rf ~/.oh-my-zsh
+
+- name: Install ZSH
+  ansible.builtin.apt:
+    name:
+      - zsh
+ 
+- name: Oh-My-Zsh
+  ansible.builtin.shell: curl -L  https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+- name: Install zsh-completions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-completions.git'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
+
+- name: Install zsh-history-substring-search
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-history-substring-search.git'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+
+- name: Install zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+- name: Install theme
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k'
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+
+- name: Update zsh config and run it
+  ansible.builtin.shell: |
+    sed -i 's/plugins=.*/plugins=(git zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting)/' ~/.zshrc
+    sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+# sed -i '$ a\\nSPACESHIP_PROMPT_ADD_NEWLINE="false"\nSPACESHIP_PROMPT_SEPARATE_LINE="false"' ~/.zshrc
