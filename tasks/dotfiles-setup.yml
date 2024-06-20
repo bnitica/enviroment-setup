@@ -1,0 +1,15 @@
+- name: Install Stow
+  ansible.builtin.apt:
+    name:
+      - stow
+
+- name: Clone dotfiles
+  ansible.builtin.git:
+    repo: 'https://github.com/bnitica/.dotfiles.git'
+    dest: ~/.dotfiles
+
+- name: Stow folders
+  ansible.builtin.shell: |
+    cd ~/.dotfiles
+    mkdir -p ~/.config/nvim
+    stow nvim -t ~/.config/nvim

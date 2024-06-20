@@ -6,4 +6,6 @@
       file: tasks/zsh-setup.yml
   - ansible.builtin.import_tasks:
       file: tasks/nvim-setup.yml
+  - ansible.builtin.import_tasks:
+      file: tasks/dotfiles-setup.yml
 

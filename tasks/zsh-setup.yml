@@ -38,4 +38,3 @@
   ansible.builtin.shell: |
     sed -i 's/plugins=.*/plugins=(git zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting)/' ~/.zshrc
     sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-# sed -i '$ a\\nSPACESHIP_PROMPT_ADD_NEWLINE="false"\nSPACESHIP_PROMPT_SEPARATE_LINE="false"' ~/.zshrc
