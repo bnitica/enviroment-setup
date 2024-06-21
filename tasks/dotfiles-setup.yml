@@ -12,5 +12,5 @@
 - name: Stow folders
   ansible.builtin.shell: |
     cd ~/.dotfiles
-    mkdir -p ~/.config/nvim ~/bin/scripts
+    mkdir -p ~/.config/nvim
     stow nvim -t ~/.config/nvim
