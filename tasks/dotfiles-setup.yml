@@ -2,6 +2,7 @@
   ansible.builtin.apt:
     name:
       - stow
+      - fzf
 
 - name: Clone dotfiles
   ansible.builtin.git:
@@ -11,5 +12,5 @@
 - name: Stow folders
   ansible.builtin.shell: |
     cd ~/.dotfiles
-    mkdir -p ~/.config/nvim
+    mkdir -p ~/.config/nvim ~/bin/scripts
     stow nvim -t ~/.config/nvim
