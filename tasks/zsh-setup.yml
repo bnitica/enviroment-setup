@@ -5,6 +5,9 @@
   ansible.builtin.apt:
     name:
       - zsh
+
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
  
 - name: Oh-My-Zsh
   ansible.builtin.shell: curl -L  https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh

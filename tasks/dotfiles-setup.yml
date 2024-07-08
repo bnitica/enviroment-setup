@@ -3,6 +3,7 @@
     name:
       - stow
       - fzf
+      - unzip
 
 - name: Clone dotfiles
   ansible.builtin.git:
