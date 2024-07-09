@@ -1,15 +1,12 @@
-- name: Remove Oh-My-Zsh
-  ansible.builtin.shell: sudo rm -rf ~/.oh-my-zsh
+- name: Remove Zsh & Oh-My-Zsh
+  ansible.builtin.shell: rm -rf ~/.zsh ~/.oh-my-zsh
 
-- name: Install ZSH
+- name: Install Zsh
   ansible.builtin.apt:
     name:
       - zsh
 
-- name: Change shell to zsh
-  shell: chsh -s $(which zsh)
- 
-- name: Oh-My-Zsh
+- name: Build Oh-My-Zsh
   ansible.builtin.shell: curl -L  https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 - name: Install zsh-autosuggestions
@@ -37,7 +34,9 @@
     repo: 'https://github.com/romkatv/powerlevel10k'
     dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
 
-- name: Update zsh config and run it
+- name: Update zsh config & chnage shell
   ansible.builtin.shell: |
-    sed -i 's/plugins=.*/plugins=(git zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting)/' ~/.zshrc
-    sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+    sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+    sed -i 's/^plugins=.*/plugins=(git ssh-aggent zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting)/' ~/.zshrc
+    sed -i '/^plugins=.*/a zstyle :omz:plugins:ssh-agent identities id_git' ~/.zshrc
+    sudo chsh -s $(which zsh) $(whoami)

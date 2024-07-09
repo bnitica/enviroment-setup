@@ -1,11 +1,7 @@
 - hosts: localhost
   tasks:
-  - ansible.builtin.import_tasks:
-      file: tasks/git-setup.yml
-  - ansible.builtin.import_tasks:
-      file: tasks/zsh-setup.yml
-  - ansible.builtin.import_tasks:
-      file: tasks/nvim-setup.yml
-  - ansible.builtin.import_tasks:
-      file: tasks/dotfiles-setup.yml
+  - ansible.builtin.import_tasks: tasks/zsh-setup.yml
+  - ansible.builtin.import_tasks: tasks/git-setup.yml
+  - ansible.builtin.import_tasks: tasks/nvim-setup.yml
+  - ansible.builtin.import_tasks: tasks/dotfiles-setup.yml
 
