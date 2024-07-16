@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name:
       - git
+      - gh
 
 - name: Git personal setup email
   git_config:

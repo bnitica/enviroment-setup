@@ -37,6 +37,6 @@
 - name: Update zsh config & chnage shell
   ansible.builtin.shell: |
     sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-    sed -i 's/^plugins=.*/plugins=(git ssh-agent zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting)/' ~/.zshrc
+    sed -i 's/^plugins=.*/plugins=(aliases dotenv gh git nvm ssh-agent zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting)/' ~/.zshrc
     sed -i '/^plugins=.*/a zstyle :omz:plugins:ssh-agent identities id_git' ~/.zshrc
     sudo chsh -s $(which zsh) $(whoami)
